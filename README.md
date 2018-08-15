@@ -1,21 +1,22 @@
-# About
+# (Grafana + InfluxDB + CollectD) / Docker
 
-This repository shows how to use a docker compose file to setup a local collectd, influxdb, grafana stack,
+![Schema](schema.jpg "Schema")
 
-You can use this repository to try collect system data, store it in influxdb and create graph chart in Grafana.
+This repository shows how to use a docker to setup a local collectd, influxdb, 
+grafana stack.
 
-This repository is linked from my medium post, check details [here](https://blog.laputa.io/try-influxdb-and-grafana-by-docker-6b4d50c6a446#.7z7oz5st5).
+You can use this repository to try collect system data, store it in influxdb 
+and create graph chart in Grafana.
 
-Admin page for influxdb has been deprecated in version 1.3.
+Thanks to [Han Xiao](https://github.com/justlaputa/collectd-influxdb-grafana-docker) for 
+initial work.
 
-# How to
+# Installation
 
-It's easy, just clone this repository and run:
+* Clone this repository and run:
 
 ```
-$ docker-compose up -d
+$ docker-compose up -d --build
 ```
 
-Then you can open:
-
-- <http://localhost:3000>  grafana web page (login with admin/admin)
+* Then you can open <http://localhost:3000>  grafana web page (login with admin/admin)
