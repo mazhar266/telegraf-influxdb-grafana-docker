@@ -7,7 +7,7 @@ services:
     network_mode: host
     volumes:
       - /proc:/mnt/proc:ro
-      - ./collectd.conf:/etc/collectd/collectd.conf
+      - ./docker/collectd/collectd.conf:/etc/collectd/collectd.conf
   influxdb:
     image: influxdb:1.4
     ports:
@@ -15,8 +15,8 @@ services:
       - "25826:25826/udp"
     volumes:
       - ./influxdb-data:/var/lib/influxdb
-      - ./influxdb.conf:/etc/influxdb/influxdb.conf
-      - ./types.db:/usr/share/collectd/types.db:ro
+      - ./docker/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf
+      - ./docker/influxdb/types.db:/usr/share/collectd/types.db:ro
   grafana:
     image: grafana/grafana:5.1.1
     user: "root"
@@ -24,6 +24,6 @@ services:
       - "3000:3000"
     volumes:
       - ./grafana-storage:/var/lib/grafana
-      - ./datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml
-      - ./dashboard.yaml:/etc/grafana/provisioning/dashboards/dashboard.yaml
-      - ./Dashboard.json:/var/lib/grafana/dashboards/Dashboard.json
+      - ./docker/grafana/datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml
+      - ./docker/grafana/dashboard.yaml:/etc/grafana/provisioning/dashboards/dashboard.yaml
+      - ./docker/grafana/Dashboard.json:/var/lib/grafana/dashboards/Dashboard.json
