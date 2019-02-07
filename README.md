@@ -13,10 +13,16 @@ initial work.
 
 # Installation
 
+* Replace `.env_dist` to `.env`
+
+```
+$ mv .env_dist .env
+```
+
 * Clone this repository and run:
 
 ```
-$ docker-compose up -d --build
+$ make up
 ```
 
 * Then you can open <http://localhost:3000>  grafana web page (login with admin/admin)
