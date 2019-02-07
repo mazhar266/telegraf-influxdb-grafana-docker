@@ -1,9 +1,11 @@
-version: '2'
+version: '2.3'
 
 services:
   telegraf:
     image: telegraf
+    runtime: nvidia
     environment:
+      - NVIDIA_VISIBLE_DEVICES=all
       - HOST_PROC=/host/proc
     privileged: true
     network_mode: host
@@ -11,13 +13,7 @@ services:
       - /proc:/host/proc:ro
       - ./docker/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf
       - /var/run/docker.sock:/var/run/docker.sock
-  #collectd:
-  #  image: fr3nd/collectd
-  #  privileged: true
-  #  network_mode: host
-  #  volumes:
-  #    - /proc:/mnt/proc:ro
-  #    - ./docker/collectd/collectd.conf:/etc/collectd/collectd.conf
+      - /var/run/utmp:/var/run/utmp
   influxdb:
     image: influxdb:1.4
     ports:

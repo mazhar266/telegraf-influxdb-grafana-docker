@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1549535324745,
+  "iteration": 1549555941806,
   "links": [],
   "panels": [
     {
@@ -25,6 +25,517 @@
         "w": 24,
         "x": 0,
         "y": 0
+      },
+      "id": 36,
+      "panels": [],
+      "title": "NVIDIA",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$Datasource",
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 1
+      },
+      "id": 33,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "GPU0",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "nvidia_smi",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temperature_gpu"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "index",
+              "operator": "=",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "alias": "GPU1",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "nvidia_smi",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temperature_gpu"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "index",
+              "operator": "=",
+              "value": "1"
+            }
+          ]
+        },
+        {
+          "alias": "GPU2",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "nvidia_smi",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temperature_gpu"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "index",
+              "operator": "=",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "GPU3",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "nvidia_smi",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temperature_gpu"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "index",
+              "operator": "=",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Temperature GPU",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$Datasource",
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 1
+      },
+      "id": 34,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "GPU0",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "nvidia_smi",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "utilization_gpu"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "index",
+              "operator": "=",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "alias": "GPU1",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "nvidia_smi",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "utilization_gpu"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "index",
+              "operator": "=",
+              "value": "1"
+            }
+          ]
+        },
+        {
+          "alias": "GPU2",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "nvidia_smi",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "utilization_gpu"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "index",
+              "operator": "=",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "GPU3",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "nvidia_smi",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "utilization_gpu"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "index",
+              "operator": "=",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Utilization GPU",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 10
       },
       "id": 31,
       "panels": [],
@@ -42,7 +553,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 1
+        "y": 11
       },
       "id": 24,
       "legend": {
@@ -68,7 +579,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "mongo",
+          "alias": "torch",
           "groupBy": [
             {
               "params": [
@@ -106,7 +617,7 @@
             {
               "key": "container_image",
               "operator": "=",
-              "value": "mongo"
+              "value": "torch-notebook"
             }
           ]
         },
@@ -283,7 +794,7 @@
           ]
         },
         {
-          "alias": "app",
+          "alias": "grafana",
           "groupBy": [
             {
               "params": [
@@ -377,7 +888,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 1
+        "y": 11
       },
       "id": 25,
       "legend": {
@@ -403,7 +914,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "mongo",
+          "alias": "torch",
           "groupBy": [
             {
               "params": [
@@ -441,93 +952,7 @@
             {
               "key": "container_image",
               "operator": "=",
-              "value": "mongo"
-            }
-          ]
-        },
-        {
-          "alias": "neo4j",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "docker_container_mem",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "usage"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "container_image",
-              "operator": "=",
-              "value": "bearstech/neo4j"
-            }
-          ]
-        },
-        {
-          "alias": "python",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "docker_container_mem",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "D",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "usage"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "container_image",
-              "operator": "=",
-              "value": "factory/python"
+              "value": "torch-notebook"
             }
           ]
         },
@@ -618,7 +1043,7 @@
           ]
         },
         {
-          "alias": "app",
+          "alias": "grafana",
           "groupBy": [
             {
               "params": [
@@ -707,7 +1132,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 10
+        "y": 20
       },
       "id": 27,
       "panels": [],
@@ -737,7 +1162,7 @@
         "h": 7,
         "w": 6,
         "x": 0,
-        "y": 11
+        "y": 21
       },
       "id": 4,
       "interval": null,
@@ -851,7 +1276,7 @@
         "h": 7,
         "w": 6,
         "x": 6,
-        "y": 11
+        "y": 21
       },
       "id": 6,
       "interval": null,
@@ -956,7 +1381,7 @@
         "h": 7,
         "w": 6,
         "x": 12,
-        "y": 11
+        "y": 21
       },
       "id": 16,
       "interval": null,
@@ -1121,7 +1546,7 @@
         "h": 7,
         "w": 6,
         "x": 18,
-        "y": 11
+        "y": 21
       },
       "id": 10,
       "interval": null,
@@ -1221,7 +1646,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 18
+        "y": 28
       },
       "id": 5,
       "interval": "15s",
@@ -1344,7 +1769,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 18
+        "y": 28
       },
       "id": 3,
       "legend": {
@@ -1556,7 +1981,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 24
+        "y": 34
       },
       "id": 1,
       "interval": ">15s",
@@ -1785,7 +2210,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 24
+        "y": 34
       },
       "id": 15,
       "legend": {
@@ -1813,11 +2238,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "Received",
           "groupBy": [
             {
               "params": [
-                "$__interval"
+                "10s"
               ],
               "type": "time"
             },
@@ -1831,30 +2255,43 @@
           "measurement": "net",
           "orderByTime": "ASC",
           "policy": "default",
-          "refId": "C",
+          "query": "SELECT derivative(first(bytes_recv), 1s) as \"download bytes/sec\", derivative(first(bytes_sent), 1s) as \"upload bytes/sec\" FROM net WHERE time > now() - 1h AND interface != 'all' GROUP BY time(10s), interface fill(0);",
+          "rawQuery": false,
+          "refId": "A",
           "resultFormat": "time_series",
           "select": [
             [
               {
                 "params": [
-                  "packets_recv"
+                  "bytes_recv"
                 ],
                 "type": "field"
               },
               {
                 "params": [],
-                "type": "mean"
+                "type": "first"
+              },
+              {
+                "params": [
+                  "1s"
+                ],
+                "type": "derivative"
               }
             ]
           ],
-          "tags": []
+          "tags": [
+            {
+              "key": "interface",
+              "operator": "!=",
+              "value": "all"
+            }
+          ]
         },
         {
-          "alias": "Sent",
           "groupBy": [
             {
               "params": [
-                "$__interval"
+                "10s"
               ],
               "type": "time"
             },
@@ -1868,23 +2305,37 @@
           "measurement": "net",
           "orderByTime": "ASC",
           "policy": "default",
-          "refId": "D",
+          "query": "SELECT derivative(first(bytes_recv), 1s) as \"download bytes/sec\", derivative(first(bytes_sent), 1s) as \"upload bytes/sec\" FROM net WHERE time > now() - 1h AND interface != 'all' GROUP BY time(10s), interface fill(0);",
+          "rawQuery": false,
+          "refId": "B",
           "resultFormat": "time_series",
           "select": [
             [
               {
                 "params": [
-                  "packets_sent"
+                  "bytes_sent"
                 ],
                 "type": "field"
               },
               {
                 "params": [],
-                "type": "mean"
+                "type": "first"
+              },
+              {
+                "params": [
+                  "1s"
+                ],
+                "type": "derivative"
               }
             ]
           ],
-          "tags": []
+          "tags": [
+            {
+              "key": "interface",
+              "operator": "!=",
+              "value": "all"
+            }
+          ]
         }
       ],
       "thresholds": [],
@@ -1938,7 +2389,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 30
+        "y": 40
       },
       "id": 7,
       "legend": {
@@ -2052,7 +2503,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 30
+        "y": 40
       },
       "id": 2,
       "interval": "15s",
