@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1549555941806,
+  "iteration": 1556384646138,
   "links": [],
   "panels": [
     {
@@ -58,6 +58,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "paceLength": 10,
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -68,13 +69,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "GPU0",
+          "alias": "GPU $tag_index",
           "groupBy": [
             {
               "params": [
                 "$__interval"
               ],
               "type": "time"
+            },
+            {
+              "params": [
+                "index"
+              ],
+              "type": "tag"
             },
             {
               "params": [
@@ -102,146 +109,12 @@
               }
             ]
           ],
-          "tags": [
-            {
-              "key": "index",
-              "operator": "=",
-              "value": "0"
-            }
-          ]
-        },
-        {
-          "alias": "GPU1",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "nvidia_smi",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "temperature_gpu"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "index",
-              "operator": "=",
-              "value": "1"
-            }
-          ]
-        },
-        {
-          "alias": "GPU2",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "nvidia_smi",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "C",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "temperature_gpu"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "index",
-              "operator": "=",
-              "value": "2"
-            }
-          ]
-        },
-        {
-          "alias": "GPU3",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "nvidia_smi",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "D",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "temperature_gpu"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "index",
-              "operator": "=",
-              "value": "3"
-            }
-          ]
+          "tags": []
         }
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Temperature GPU",
       "tooltip": {
@@ -307,6 +180,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "paceLength": 10,
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -317,13 +191,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "GPU0",
+          "alias": "GPU $tag_index",
           "groupBy": [
             {
               "params": [
                 "$__interval"
               ],
               "type": "time"
+            },
+            {
+              "params": [
+                "index"
+              ],
+              "type": "tag"
             },
             {
               "params": [
@@ -335,13 +215,15 @@
           "measurement": "nvidia_smi",
           "orderByTime": "ASC",
           "policy": "default",
+          "query": "SELECT mean(\"$gpu_fields\") FROM \"nvidia_smi\" WHERE $timeFilter GROUP BY time($__interval), \"index\" fill(null)",
+          "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
             [
               {
                 "params": [
-                  "utilization_gpu"
+                  "/^$gpu_fields$/"
                 ],
                 "type": "field"
               },
@@ -351,148 +233,14 @@
               }
             ]
           ],
-          "tags": [
-            {
-              "key": "index",
-              "operator": "=",
-              "value": "0"
-            }
-          ]
-        },
-        {
-          "alias": "GPU1",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "nvidia_smi",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "utilization_gpu"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "index",
-              "operator": "=",
-              "value": "1"
-            }
-          ]
-        },
-        {
-          "alias": "GPU2",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "nvidia_smi",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "C",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "utilization_gpu"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "index",
-              "operator": "=",
-              "value": "2"
-            }
-          ]
-        },
-        {
-          "alias": "GPU3",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "nvidia_smi",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "D",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "utilization_gpu"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "index",
-              "operator": "=",
-              "value": "3"
-            }
-          ]
+          "tags": []
         }
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
-      "title": "Utilization GPU",
+      "title": "$gpu_fields",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -569,6 +317,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "connected",
+      "paceLength": 10,
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -579,13 +328,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "torch",
+          "alias": "$tag_container_name",
           "groupBy": [
             {
               "params": [
                 "$__interval"
               ],
               "type": "time"
+            },
+            {
+              "params": [
+                "container_name"
+              ],
+              "type": "tag"
             },
             {
               "params": [
@@ -613,232 +368,12 @@
               }
             ]
           ],
-          "tags": [
-            {
-              "key": "container_image",
-              "operator": "=",
-              "value": "torch-notebook"
-            }
-          ]
-        },
-        {
-          "alias": "neo4j",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "docker_container_cpu",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "usage_percent"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "container_image",
-              "operator": "=",
-              "value": "bearstech/neo4j"
-            }
-          ]
-        },
-        {
-          "alias": "python",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "docker_container_cpu",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "D",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "usage_percent"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "container_image",
-              "operator": "=",
-              "value": "factory/python"
-            }
-          ]
-        },
-        {
-          "alias": "telegraf",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "docker_container_cpu",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "E",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "usage_percent"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "container_image",
-              "operator": "=",
-              "value": "telegraf"
-            }
-          ]
-        },
-        {
-          "alias": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "docker_container_cpu",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "F",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "usage_percent"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "container_image",
-              "operator": "=",
-              "value": "influxdb"
-            }
-          ]
-        },
-        {
-          "alias": "grafana",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "docker_container_cpu",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "G",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "usage_percent"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "container_image",
-              "operator": "=",
-              "value": "grafana/grafana"
-            }
-          ]
+          "tags": []
         }
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Docker CPU",
       "tooltip": {
@@ -904,6 +439,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "connected",
+      "paceLength": 10,
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -914,13 +450,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "torch",
+          "alias": "$tag_container_name",
           "groupBy": [
             {
               "params": [
                 "$__interval"
               ],
               "type": "time"
+            },
+            {
+              "params": [
+                "container_name"
+              ],
+              "type": "tag"
             },
             {
               "params": [
@@ -948,146 +490,12 @@
               }
             ]
           ],
-          "tags": [
-            {
-              "key": "container_image",
-              "operator": "=",
-              "value": "torch-notebook"
-            }
-          ]
-        },
-        {
-          "alias": "telegraf",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "docker_container_mem",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "E",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "usage"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "container_image",
-              "operator": "=",
-              "value": "telegraf"
-            }
-          ]
-        },
-        {
-          "alias": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "docker_container_mem",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "F",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "usage"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "container_image",
-              "operator": "=",
-              "value": "influxdb"
-            }
-          ]
-        },
-        {
-          "alias": "grafana",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "docker_container_mem",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "G",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "usage"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "container_image",
-              "operator": "=",
-              "value": "grafana/grafana"
-            }
-          ]
+          "tags": []
         }
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Docker RAM mem",
       "tooltip": {
@@ -1411,6 +819,8 @@
           "to": "null"
         }
       ],
+      "repeat": null,
+      "repeatDirection": "h",
       "sparkline": {
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": false,
@@ -1435,58 +845,10 @@
               "type": "fill"
             }
           ],
-          "measurement": "df_value",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "type_instance",
-              "operator": "=",
-              "value": "used"
-            },
-            {
-              "condition": "AND",
-              "key": "instance",
-              "operator": "=",
-              "value": "root"
-            }
-          ]
-        },
-        {
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
           "measurement": "disk",
           "orderByTime": "ASC",
           "policy": "default",
-          "refId": "B",
+          "refId": "A",
           "resultFormat": "time_series",
           "select": [
             [
@@ -1502,13 +864,7 @@
               }
             ]
           ],
-          "tags": [
-            {
-              "key": "device",
-              "operator": "=",
-              "value": "overlay"
-            }
-          ]
+          "tags": []
         }
       ],
       "thresholds": "60,90",
@@ -1665,6 +1021,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "paceLength": 10,
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1699,7 +1056,7 @@
             [
               {
                 "params": [
-                  "usage_system"
+                  "usage_user"
                 ],
                 "type": "field"
               },
@@ -1720,6 +1077,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "CPU load",
       "tooltip": {
@@ -1771,7 +1129,7 @@
         "x": 12,
         "y": 28
       },
-      "id": 3,
+      "id": 15,
       "legend": {
         "alignAsTable": true,
         "avg": false,
@@ -1786,11 +1144,204 @@
       "lines": true,
       "linewidth": 1,
       "links": [],
-      "nullPointMode": "connected",
+      "nullPointMode": "null as zero",
+      "paceLength": 10,
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "received",
+          "groupBy": [
+            {
+              "params": [
+                "10s"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "net",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT derivative(first(bytes_recv), 1s) as \"download bytes/sec\", derivative(first(bytes_sent), 1s) as \"upload bytes/sec\" FROM net WHERE time > now() - 1h AND interface != 'all' GROUP BY time(10s), interface fill(0);",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bytes_recv"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "first"
+              },
+              {
+                "params": [
+                  "1s"
+                ],
+                "type": "derivative"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "interface",
+              "operator": "!=",
+              "value": "all"
+            }
+          ]
+        },
+        {
+          "alias": "sent",
+          "groupBy": [
+            {
+              "params": [
+                "10s"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "net",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT derivative(first(bytes_recv), 1s) as \"download bytes/sec\", derivative(first(bytes_sent), 1s) as \"upload bytes/sec\" FROM net WHERE time > now() - 1h AND interface != 'all' GROUP BY time(10s), interface fill(0);",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bytes_sent"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "first"
+              },
+              {
+                "params": [
+                  "1s"
+                ],
+                "type": "derivative"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "interface",
+              "operator": "!=",
+              "value": "all"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Network",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "Bps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$Datasource",
+      "fill": 1,
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 0,
+        "y": 34
+      },
+      "id": 3,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "connected",
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": "disk_name",
+      "repeatDirection": "h",
+      "scopedVars": {
+        "disk_name": {
+          "selected": false,
+          "text": "sda1",
+          "value": "sda1"
+        }
+      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
@@ -1835,8 +1386,8 @@
           "tags": [
             {
               "key": "device",
-              "operator": "=",
-              "value": "overlay"
+              "operator": "=~",
+              "value": "/^$disk_name$/"
             }
           ]
         },
@@ -1879,8 +1430,8 @@
           "tags": [
             {
               "key": "device",
-              "operator": "=",
-              "value": "overlay"
+              "operator": "=~",
+              "value": "/^$disk_name$/"
             }
           ]
         },
@@ -1923,16 +1474,465 @@
           "tags": [
             {
               "key": "device",
-              "operator": "=",
-              "value": "overlay"
+              "operator": "=~",
+              "value": "/^$disk_name$/"
             }
           ]
         }
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
-      "title": "Disk usage",
+      "title": "Disk $disk_name",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bits",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$Datasource",
+      "fill": 1,
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 8,
+        "y": 34
+      },
+      "id": 42,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "connected",
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1556384646138,
+      "repeatPanelId": 3,
+      "scopedVars": {
+        "disk_name": {
+          "selected": false,
+          "text": "sdb2",
+          "value": "sdb2"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Used",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "disk",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "used"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=~",
+              "value": "/^$disk_name$/"
+            }
+          ]
+        },
+        {
+          "alias": "Free",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "disk",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "free"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=~",
+              "value": "/^$disk_name$/"
+            }
+          ]
+        },
+        {
+          "alias": "Total",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "disk",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "total"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=~",
+              "value": "/^$disk_name$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Disk $disk_name",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bits",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$Datasource",
+      "fill": 1,
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 16,
+        "y": 34
+      },
+      "id": 43,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "connected",
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1556384646138,
+      "repeatPanelId": 3,
+      "scopedVars": {
+        "disk_name": {
+          "selected": false,
+          "text": "sdb4",
+          "value": "sdb4"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Used",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "disk",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "used"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=~",
+              "value": "/^$disk_name$/"
+            }
+          ]
+        },
+        {
+          "alias": "Free",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "disk",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "free"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=~",
+              "value": "/^$disk_name$/"
+            }
+          ]
+        },
+        {
+          "alias": "Total",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "disk",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "total"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=~",
+              "value": "/^$disk_name$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Disk $disk_name",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1981,7 +1981,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 34
+        "y": 40
       },
       "id": 1,
       "interval": ">15s",
@@ -2001,6 +2001,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "paceLength": 10,
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -2161,6 +2162,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "RAM Memory",
       "tooltip": {
@@ -2210,24 +2212,26 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 34
+        "y": 40
       },
-      "id": 15,
+      "id": 2,
+      "interval": "15s",
       "legend": {
-        "alignAsTable": true,
+        "alignAsTable": false,
         "avg": false,
         "current": false,
         "max": false,
         "min": false,
-        "rightSide": true,
-        "show": true,
+        "rightSide": false,
+        "show": false,
         "total": false,
         "values": false
       },
       "lines": true,
       "linewidth": 1,
       "links": [],
-      "nullPointMode": "null as zero",
+      "nullPointMode": "null",
+      "paceLength": 10,
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -2238,12 +2242,19 @@
       "steppedLine": false,
       "targets": [
         {
+          "alias": "$tag_cpu",
           "groupBy": [
             {
               "params": [
-                "10s"
+                "$__interval"
               ],
               "type": "time"
+            },
+            {
+              "params": [
+                "cpu"
+              ],
+              "type": "tag"
             },
             {
               "params": [
@@ -2252,96 +2263,33 @@
               "type": "fill"
             }
           ],
-          "measurement": "net",
+          "measurement": "cpu",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT derivative(first(bytes_recv), 1s) as \"download bytes/sec\", derivative(first(bytes_sent), 1s) as \"upload bytes/sec\" FROM net WHERE time > now() - 1h AND interface != 'all' GROUP BY time(10s), interface fill(0);",
-          "rawQuery": false,
-          "refId": "A",
+          "refId": "J",
           "resultFormat": "time_series",
           "select": [
             [
               {
                 "params": [
-                  "bytes_recv"
+                  "usage_user"
                 ],
                 "type": "field"
               },
               {
                 "params": [],
-                "type": "first"
-              },
-              {
-                "params": [
-                  "1s"
-                ],
-                "type": "derivative"
+                "type": "mean"
               }
             ]
           ],
-          "tags": [
-            {
-              "key": "interface",
-              "operator": "!=",
-              "value": "all"
-            }
-          ]
-        },
-        {
-          "groupBy": [
-            {
-              "params": [
-                "10s"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "net",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT derivative(first(bytes_recv), 1s) as \"download bytes/sec\", derivative(first(bytes_sent), 1s) as \"upload bytes/sec\" FROM net WHERE time > now() - 1h AND interface != 'all' GROUP BY time(10s), interface fill(0);",
-          "rawQuery": false,
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "bytes_sent"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "first"
-              },
-              {
-                "params": [
-                  "1s"
-                ],
-                "type": "derivative"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "interface",
-              "operator": "!=",
-              "value": "all"
-            }
-          ]
+          "tags": []
         }
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
-      "title": "Network",
+      "title": "CPU",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -2357,7 +2305,8 @@
       },
       "yaxes": [
         {
-          "format": "Bps",
+          "decimals": null,
+          "format": "none",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -2389,7 +2338,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 40
+        "y": 46
       },
       "id": 7,
       "legend": {
@@ -2405,6 +2354,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "connected",
+      "paceLength": 10,
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -2454,6 +2404,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Users",
       "tooltip": {
@@ -2503,18 +2454,15 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 40
+        "y": 46
       },
-      "id": 2,
-      "interval": "15s",
+      "id": 41,
       "legend": {
-        "alignAsTable": true,
         "avg": false,
         "current": false,
         "max": false,
         "min": false,
-        "rightSide": true,
-        "show": true,
+        "show": false,
         "total": false,
         "values": false
       },
@@ -2522,6 +2470,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "paceLength": 10,
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -2532,6 +2481,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "alias": "$tag_feature",
           "groupBy": [
             {
               "params": [
@@ -2541,45 +2491,9 @@
             },
             {
               "params": [
-                "null"
+                "feature"
               ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "cpu",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "J",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "usage_system"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "cpu",
-              "operator": "=",
-              "value": "cpu0"
-            }
-          ]
-        },
-        {
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
+              "type": "tag"
             },
             {
               "params": [
@@ -2588,91 +2502,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "cpu",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "K",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "usage_system"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "cpu",
-              "operator": "=",
-              "value": "cpu1"
-            }
-          ]
-        },
-        {
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "cpu",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "L",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "usage_system"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "cpu",
-              "operator": "=",
-              "value": "cpu2"
-            }
-          ]
-        },
-        {
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "cpu",
+          "measurement": "sensors",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -2681,7 +2511,7 @@
             [
               {
                 "params": [
-                  "usage_system"
+                  "temp_input"
                 ],
                 "type": "field"
               },
@@ -2691,19 +2521,14 @@
               }
             ]
           ],
-          "tags": [
-            {
-              "key": "cpu",
-              "operator": "=",
-              "value": "cpu3"
-            }
-          ]
+          "tags": []
         }
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
-      "title": "CPU",
+      "title": "CPU temperature",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -2719,8 +2544,7 @@
       },
       "yaxes": [
         {
-          "decimals": null,
-          "format": "none",
+          "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -2743,7 +2567,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 16,
+  "schemaVersion": 18,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -2760,12 +2584,108 @@
         "query": "influxdb",
         "refresh": 1,
         "regex": "",
+        "skipUrlSync": false,
         "type": "datasource"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "power_draw",
+          "value": "power_draw"
+        },
+        "datasource": "$Datasource",
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "gpu_fields",
+        "options": [
+          {
+            "selected": false,
+            "text": "fan_speed",
+            "value": "fan_speed"
+          },
+          {
+            "selected": false,
+            "text": "memory_free",
+            "value": "memory_free"
+          },
+          {
+            "selected": false,
+            "text": "memory_total",
+            "value": "memory_total"
+          },
+          {
+            "selected": false,
+            "text": "memory_used",
+            "value": "memory_used"
+          },
+          {
+            "selected": true,
+            "text": "power_draw",
+            "value": "power_draw"
+          },
+          {
+            "selected": false,
+            "text": "temperature_gpu",
+            "value": "temperature_gpu"
+          },
+          {
+            "selected": false,
+            "text": "utilization_gpu",
+            "value": "utilization_gpu"
+          },
+          {
+            "selected": false,
+            "text": "utilization_memory",
+            "value": "utilization_memory"
+          }
+        ],
+        "query": "SHOW field keys from nvidia_smi;",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "$Datasource",
+        "definition": "SHOW TAG values from disk WITH KEY = \"device\"",
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "disk_name",
+        "options": [],
+        "query": "SHOW TAG values from disk WITH KEY = \"device\"",
+        "refresh": 1,
+        "regex": "^(?!.*overlay).*$",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       }
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {
@@ -2794,7 +2714,7 @@
     ]
   },
   "timezone": "",
-  "title": "DashboardTelegraf",
+  "title": "DashboardGpu1",
   "uid": "YXKklXTik",
   "version": 1
 }
