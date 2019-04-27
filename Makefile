@@ -3,8 +3,14 @@
 # we run outside the CI. include .env file
 include .env
 
+export GPU
+
+ifeq ($(GPU),1)
+	export COMPOSE:=docker-compose -f docker-compose.yml -f docker/telegraf-gpu.yml
+endif
+
 # compose command to merge production file and and dev/tools overrides
-COMPOSE?=docker-compose -f docker-compose.yml 
+COMPOSE?=docker-compose -f docker-compose.yml -f docker/telegraf.yml
 
 up:
 	# run compose in background
