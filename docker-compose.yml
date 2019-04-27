@@ -6,7 +6,6 @@ services:
     image: influxdb:1.4
     ports:
       - "8086:8086"
-      - "25826:25826/udp"
     environment:
         INFLUXDB_USER: ${INFLUXDB_USERNAME}
         INFLUXDB_USER_PASSWORD: ${INFLUXDB_PASSWORD}

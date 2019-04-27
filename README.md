@@ -1,8 +1,8 @@
-# (Grafana + InfluxDB + CollectD) / Docker
+# (Grafana + InfluxDB + Telegraf) / Docker
 
 ![Schema](schema.jpg "Schema")
 
-This repository shows how to use a docker to setup a local collectd, influxdb, 
+This repository shows how to use a docker to setup a local telegraf, influxdb, 
 grafana stack.
 
 You can use this repository to try collect system data, store it in influxdb 
