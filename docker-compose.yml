@@ -2,6 +2,7 @@ version: '2.3'
 
 services:
   telegraf:
+    container_name: telegraf
     image: telegraf
     runtime: nvidia
     environment:
@@ -15,6 +16,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/run/utmp:/var/run/utmp
   influxdb:
+    container_name: influxdb
     image: influxdb:1.4
     ports:
       - "8086:8086"
@@ -27,6 +29,7 @@ services:
       - ./docker/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf
 
   grafana:
+    container_name: grafana
     image: grafana/grafana:5.1.1
     user: "root"
     environment:
