@@ -12,6 +12,7 @@ services:
         INFLUXDB_DB: ${INFLUXDB_DATABASE}
     volumes:
       - ./docker/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf
+      - ./influxdb-data:/var/lib/influxdb
 
   grafana:
     container_name: grafana
