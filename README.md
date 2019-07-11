@@ -1,6 +1,6 @@
 # (Grafana + InfluxDB + Telegraf) / Docker
 
-![Schema](schema.jpg "Schema")
+![Schema](schema.png "Schema")
 
 This repository shows how to use a docker to setup a local telegraf, influxdb, 
 grafana stack.
