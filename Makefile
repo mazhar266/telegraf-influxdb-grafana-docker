@@ -12,11 +12,14 @@ endif
 # compose command to merge production file and and dev/tools overrides
 COMPOSE?=docker-compose -f docker-compose.yml -f docker/telegraf.yml
 
-up:
+.env: 
+	cp .env_dist .env
+
+up: .env
 	# run compose in background
 	$(COMPOSE) up -d
 
-dev:
+dev: .env
 	# run compose in foreground
 	$(COMPOSE) up
 
