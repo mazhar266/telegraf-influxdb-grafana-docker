@@ -28,9 +28,12 @@ down:
 	#$(COMPOSE) down --remove-orphans
 	$(COMPOSE) down
 
+logs:
+	$(COMPOSE) logs --tail 50 -f
+
 clean:
 	# clean local folders
-	rm -Rf grafana-storage influxdb-data
+	rm -Rf influxdb-data
 	# remove docker stuff
 	$(COMPOSE) rm --stop --force
 	# clean docker volumes
