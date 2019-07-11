@@ -13,12 +13,6 @@ initial work.
 
 # Installation
 
-* Replace `.env_dist` to `.env`
-
-```
-$ mv .env_dist .env
-```
-
 * Clone this repository and run:
 
 ```
@@ -26,3 +20,7 @@ $ make up
 ```
 
 * Then you can open <http://localhost:3000>  grafana web page (login with admin/admin)
+
+# Configuration
+
+* Configuration is stored in `./env` file. There are some sample values in `env.dist` file. Please change them.
