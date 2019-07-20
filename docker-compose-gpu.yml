@@ -1,0 +1,9 @@
+version: '2.3'
+
+services:
+  telegraf:
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - ./docker/telegraf/telegraf-gpu.conf:/etc/telegraf/telegraf.conf

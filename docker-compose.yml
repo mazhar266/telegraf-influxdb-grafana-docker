@@ -1,15 +1,29 @@
+---
 version: '2.3'
 
 services:
+  telegraf:
+    container_name: telegraf
+    image: telegraf
+    environment:
+      - HOST_PROC=/host/proc
+    privileged: true
+    network_mode: host
+    volumes:
+      - /proc:/host/proc:ro
+      - ./docker/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/utmp:/var/run/utmp
+
   influxdb:
     container_name: influxdb
     image: influxdb:1.4
     ports:
       - "8086:8086"
     environment:
-        INFLUXDB_USER: ${INFLUXDB_USERNAME}
-        INFLUXDB_USER_PASSWORD: ${INFLUXDB_PASSWORD}
-        INFLUXDB_DB: ${INFLUXDB_DATABASE}
+      INFLUXDB_USER: ${INFLUXDB_USERNAME}
+      INFLUXDB_USER_PASSWORD: ${INFLUXDB_PASSWORD}
+      INFLUXDB_DB: ${INFLUXDB_DATABASE}
     volumes:
       - ./docker/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf
       - ./influxdb-data:/var/lib/influxdb
